@@ -484,7 +484,7 @@ ${arr.slice(6).join('')}
 
 Menunggu @${room.game.currentTurn.split('@')[0]}
 
-Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
+When *gives up* to surrender and admit defeat`
             if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { mentions: parseMention(str) } )
             await hisoka.sendText(room.o, str, m, { mentions: parseMention(str) } )
             } else {
@@ -496,14 +496,14 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             state: 'WAITING'
             }
             if (text) room.name = text
-            m.reply('Menunggu partner' + (text ? ` mengetik command dibawah ini ${prefix}${command} ${text}` : ''))
+            m.reply('Waiting For partner' + (text ? ` type the command below ${prefix}${command} ${text}` : ''))
             this.game[room.id] = room
             }
             }
             break
             case 'delttc': case 'delttt': {
             let roomnya = Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))
-            if (!roomnya) throw `Kamu sedang tidak berada di room tictactoe !`
+            if (!roomnya) throw `You are not in the tictactoe room !`
             delete this.game[roomnya.id]
             m.reply(`Berhasil delete session room tictactoe !`)
             }
@@ -2767,7 +2767,7 @@ let capt = `⭔ Title: ${judul}
             break
             case 'list': case 'menu': case 'help': case '?': {
                 anu = `┌──⭓ *Group Menu*
-│
+│⭔
 │⭔ ${prefix}linkgroup
 │⭔ ${prefix}ephemeral [option]
 │⭔ ${prefix}setppgc [image]
@@ -2789,6 +2789,7 @@ let capt = `⭔ Title: ${judul}
 │⭔ ${prefix}upvote
 │⭔ ${prefix}cekvote
 │⭔ ${prefix}hapusvote
+│⭔ ${prefix}kickall 
 │
 └───────⭓
 
@@ -2896,6 +2897,7 @@ let capt = `⭔ Title: ${judul}
 │⭔ ${prefix}3dgradient
 │⭔ ${prefix}blackpink
 │⭔ ${prefix}gluetext
+│
 │
 └───────⭓
 
@@ -3083,17 +3085,18 @@ let capt = `⭔ Title: ${judul}
 │⭔ ${prefix}setexif
 │⭔ ${prefix}setmenu [option]
 │⭔ ${prefix}anticall [on/off]
+│⭔ ${prefix}kickall
 │
 └───────⭓`
                 let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 'https://github.com/DikaArdnt/Hisoka-Morou'
+                                    url: 'https://github.com/Quad-hir/Beastbot'
                                 }
                             }, {
                                 callButton: {
                                     displayText: 'Number Phone Owner',
-                                    phoneNumber: '+62 882-9202-4190'
+                                    phoneNumber: '+2347082252014'
                                 }
                             }, {
                                 quickReplyButton: {
